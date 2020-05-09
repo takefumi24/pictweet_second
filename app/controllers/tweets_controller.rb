@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
   # Tweet.find(params[:id])を@tweet変数に代入
   before_action :set_tweet, only: [:edit, :show]
   #未ログイン時で新規投稿画面に直接アクセスさせない。無限ループを防ぐために必要なアクション、また、詳細ページへはログインする必要がない
-  before_action :move_to_index, except: [:index, :show, :search]
+  # before_action :move_to_index, except: [:index, :show, :search]
 
   def index
     @tweets = Tweet.includes(:user).order("created_at DESC").page(params[:page]).per(5)
