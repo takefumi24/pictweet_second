@@ -10,8 +10,11 @@ describe TweetsController do
 
   describe 'GET #edit' do
     it "@tweetに正しい値が入っていること" do
+      # factory_botを使ったインスタンス作成
       tweet = create(:tweet)
+      # 擬似的なリクエストをして、idというキーのバリューに作成したインスタンスのidをセット
       get :edit, params: {id: tweet}
+      # リクエストされたeditアクションの中で定義されている@tweetが、先程作成したtweetと一致しているか
       expect(assigns(:tweet)).to eq tweet
     end
 
